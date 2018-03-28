@@ -1,0 +1,10 @@
+C:\Users\ramon\Desktop\av2-sistemas-distribuidos\bin\Debug\netcoreapp2.0\av2-sistemas-distribuidos.deps.json
+C:\Users\ramon\Desktop\av2-sistemas-distribuidos\bin\Debug\netcoreapp2.0\av2-sistemas-distribuidos.runtimeconfig.json
+C:\Users\ramon\Desktop\av2-sistemas-distribuidos\bin\Debug\netcoreapp2.0\av2-sistemas-distribuidos.runtimeconfig.dev.json
+C:\Users\ramon\Desktop\av2-sistemas-distribuidos\bin\Debug\netcoreapp2.0\av2-sistemas-distribuidos.dll
+C:\Users\ramon\Desktop\av2-sistemas-distribuidos\bin\Debug\netcoreapp2.0\av2-sistemas-distribuidos.pdb
+C:\Users\ramon\Desktop\av2-sistemas-distribuidos\obj\Debug\netcoreapp2.0\av2-sistemas-distribuidos.csproj.CoreCompileInputs.cache
+C:\Users\ramon\Desktop\av2-sistemas-distribuidos\obj\Debug\netcoreapp2.0\av2-sistemas-distribuidos.AssemblyInfoInputs.cache
+C:\Users\ramon\Desktop\av2-sistemas-distribuidos\obj\Debug\netcoreapp2.0\av2-sistemas-distribuidos.AssemblyInfo.cs
+C:\Users\ramon\Desktop\av2-sistemas-distribuidos\obj\Debug\netcoreapp2.0\av2-sistemas-distribuidos.dll
+C:\Users\ramon\Desktop\av2-sistemas-distribuidos\obj\Debug\netcoreapp2.0\av2-sistemas-distribuidos.pdb
