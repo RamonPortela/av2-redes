@@ -46,14 +46,14 @@ namespace av2_sistemas_distribuidos
                 return true;
             } else {
 
-                string mensagem = "Permissão de decolagem negada,";
+                string mensagem = "Permissão de decolagem para o "+ this.nome + " negada,";
 
-                if(pistaParaUsar != null && !pistaParaUsar.emUso){
+                if(pistaParaUsar == null || pistaParaUsar.emUso){
                     Console.WriteLine(mensagem + " todas as pistas estão ocupadas");
                     return false;
                 }
 
-                if(hangarParaEstacionar != null && !hangarParaEstacionar.emUso){
+                if(hangarParaEstacionar == null || hangarParaEstacionar.emUso){
                     Console.WriteLine(mensagem + " todas os hangares estão ocupados");
                     return false;
                 }

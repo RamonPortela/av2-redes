@@ -14,7 +14,7 @@ namespace av2_sistemas_distribuidos
         static void Main(string[] args)
         {
             List<PistaDePouso> pistas = new List<PistaDePouso> { new PistaDePouso(), new PistaDePouso(), new PistaDePouso() };
-            List<Hangar> hangares = new List<Hangar>() { new Hangar(), new Hangar() };
+            List<Hangar> hangares = new List<Hangar>() { new Hangar(), new Hangar(), new Hangar() };
 
             geraAviao(pistas, hangares).Wait();
             
