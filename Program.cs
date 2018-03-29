@@ -13,7 +13,6 @@ namespace av2_sistemas_distribuidos
         static void Main(string[] args)
         {
             pistas = new List<PistaDePouso> { new PistaDePouso() };
-            
 
             geraAviao();
 
