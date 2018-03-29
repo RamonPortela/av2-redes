@@ -40,7 +40,7 @@ namespace av2_sistemas_distribuidos
 
         public bool Decolar(){
             var pistaParaUsar = this.pistas.FirstOrDefault(x => !x.emUso);
-            if(!pistaParaUsar.emUso){
+            if(pistaParaUsar != null && !pistaParaUsar.emUso){
                 pistaParaUsar.emUso = true;
                 Console.WriteLine(this.nome + " está realizando o procedimento de decolagem");
 
