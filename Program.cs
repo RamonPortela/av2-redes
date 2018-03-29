@@ -15,21 +15,15 @@ namespace av2_sistemas_distribuidos
             pistas = new List<PistaDePouso> { new PistaDePouso() };
 
             geraAviao();
-
-            // aviao1.Pousar(pista);
-            // aviao2.Pousar(pista);
-            // aviao1.Decolar();
-            // aviao2.Pousar(pista);
+            
         }
 
         static void geraAviao(){
-            Task t = new Task(() => {
-                while(true){
-                    Aviao aviao = new Aviao("Aviao" + random.Next(0000, 9999), pistas);
-                    aviao.init(random.Next(0, 1));
-                    Thread.Sleep(random.Next(1000, 4000));
-                }
-            });
+            while(true){
+                Aviao aviao = new Aviao("Aviao" + random.Next(0000, 9999), pistas);
+                aviao.init(random.Next(0, 1));
+                Thread.Sleep(random.Next(1000, 4000));
+            }
         }
     }
 }
