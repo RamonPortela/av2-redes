@@ -5,6 +5,7 @@ namespace av2_sistemas_distribuidos
     public class PistaDePouso
     {
         private static int pistasCriadas = 0;
+        private readonly object lockObj = new object();
 
         public PistaDePouso(){
             pistasCriadas++;
@@ -12,7 +13,18 @@ namespace av2_sistemas_distribuidos
             this.emUso = false;
         }
 
-        public int numero {get; set;}
-        public bool emUso{get;set;}        
+        public int numero;
+        private bool _emUso;
+
+        public bool emUso {
+            get {
+                return _emUso;
+            } set {
+                lock(lockObj){
+                    _emUso = value;
+                }
+            }
+        }
+
     }
 }

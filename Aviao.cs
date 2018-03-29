@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using System.Threading;
 
 namespace av2_sistemas_distribuidos
 {
@@ -7,12 +10,18 @@ namespace av2_sistemas_distribuidos
         public string nome{get;set;}
         private PistaDePouso pista{get;set;}
 
+        private List<PistaDePouso> pistas {get; set;}
+
         public Aviao(string nome){
             this.nome = nome;
         }
 
         public Aviao(string nome, PistaDePouso pista) : this(nome){
             this.pista = pista;
+        }
+
+        public Aviao(string nome, List<PistaDePouso> pistas) : this(nome){
+            this.pistas = pistas;
         }
 
         public bool Pousar(PistaDePouso pista){
@@ -31,6 +40,16 @@ namespace av2_sistemas_distribuidos
             Console.WriteLine("Decolando! [" + this.nome + "][Pista-" + this.pista.numero + "]");
             this.pista.emUso = false;
             this.pista = null;
+        }
+
+        public void init(){
+            Task t = new Task(() => {
+                Console.WriteLine("Avião " + this.nome + " está no radar da torre de comando.");
+
+                while(true){
+                    Thread.Sleep(2000);
+                }
+            });
         }
 
     }

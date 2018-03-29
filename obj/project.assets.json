@@ -664,25 +664,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ramon\\.nuget\\packages\\": {},
+    "C:\\Users\\renan\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\": {},
     "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ramon\\Desktop\\av2-sistemas-distribuidos\\av2-sistemas-distribuidos.csproj",
+      "projectUniqueName": "C:\\Users\\renan\\Documents\\Meus Repositorios\\av2-sistemas-distribuidos\\av2-sistemas-distribuidos.csproj",
       "projectName": "av2-sistemas-distribuidos",
-      "projectPath": "C:\\Users\\ramon\\Desktop\\av2-sistemas-distribuidos\\av2-sistemas-distribuidos.csproj",
-      "packagesPath": "C:\\Users\\ramon\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ramon\\Desktop\\av2-sistemas-distribuidos\\obj\\",
+      "projectPath": "C:\\Users\\renan\\Documents\\Meus Repositorios\\av2-sistemas-distribuidos\\av2-sistemas-distribuidos.csproj",
+      "packagesPath": "C:\\Users\\renan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\renan\\Documents\\Meus Repositorios\\av2-sistemas-distribuidos\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackagesFallback\\",
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\Users\\ramon\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\renan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
       ],
