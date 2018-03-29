@@ -24,16 +24,16 @@ namespace av2_sistemas_distribuidos
            var pistaParaUsar = this.pistas.FirstOrDefault(x => !x.emUso);
             if(pistaParaUsar != null && !pistaParaUsar.emUso){
                 pistaParaUsar.emUso = true;
-                Console.WriteLine(this.nome + " está realizando o procedimento de aterrisagem");
+                Console.WriteLine(this.nome + " está realizando o procedimento de aterrisagem, na pista: " + pistaParaUsar.numero);
 
                 Thread.Sleep(1500);
-                Console.WriteLine(this.nome + " aterrisou! A pista será liberada");
+                Console.WriteLine(this.nome + " aterrisou! A pista " + pistaParaUsar.numero + " será liberada");
 
                 Thread.Sleep(900);
                 pistaParaUsar.emUso = false;
                 return true;
             } else {
-                Console.WriteLine(this.nome + " aguardando autorização para decolar");
+                Console.WriteLine(this.nome + " aguardando autorização para aterrisar");
                 return false;
             }
         }
@@ -42,10 +42,10 @@ namespace av2_sistemas_distribuidos
             var pistaParaUsar = this.pistas.FirstOrDefault(x => !x.emUso);
             if(pistaParaUsar != null && !pistaParaUsar.emUso){
                 pistaParaUsar.emUso = true;
-                Console.WriteLine(this.nome + " está realizando o procedimento de decolagem");
+                Console.WriteLine(this.nome + " está realizando o procedimento de decolagem, na pista: " + pistaParaUsar.numero);
 
                 Thread.Sleep(1500);
-                Console.WriteLine(this.nome + " decolou! A pista será liberada");
+                Console.WriteLine(this.nome + " decolou! A pista " + pistaParaUsar.numero + " será liberada");
 
                 Thread.Sleep(900);
                 pistaParaUsar.emUso = false;
@@ -62,7 +62,7 @@ namespace av2_sistemas_distribuidos
 
                 while(true){
                     var realizouAcao = false;
-                    if(acao == 0){
+                    if(acao % 2 == 0){
                         realizouAcao = Decolar();
                     } else {
                         realizouAcao = Pousar();

@@ -12,7 +12,7 @@ namespace av2_sistemas_distribuidos
 
         static void Main(string[] args)
         {
-            pistas = new List<PistaDePouso> { new PistaDePouso() };
+            pistas = new List<PistaDePouso> { new PistaDePouso(), new PistaDePouso(), new PistaDePouso() };
 
             geraAviao();
             
@@ -21,8 +21,8 @@ namespace av2_sistemas_distribuidos
         static void geraAviao(){
             while(true){
                 Aviao aviao = new Aviao("Aviao" + random.Next(0000, 9999), pistas);
-                aviao.init(random.Next(0, 1));
-                Thread.Sleep(random.Next(1000, 4000));
+                aviao.init(random.Next(0, 10));
+                Thread.Sleep(random.Next(1000, 3000));
             }
         }
     }
