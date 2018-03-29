@@ -25,6 +25,5 @@ namespace av2_sistemas_distribuidos
                 }
             }
         }
-
     }
 }
