@@ -27,7 +27,7 @@ namespace av2_sistemas_distribuidos
             Task t = new Task(() => {
                 while(true){
                     Aviao aviao = new Aviao("Aviao" + random.Next(0000, 9999), pistas);
-                    aviao.init();
+                    aviao.init(random.Next(0, 1));
                     Thread.Sleep(random.Next(1000, 4000));
                 }
             });

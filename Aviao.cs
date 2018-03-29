@@ -25,7 +25,7 @@ namespace av2_sistemas_distribuidos
             this.pistas = pistas;
         }
 
-        public bool Pousar(PistaDePouso pista){
+        public bool Pousar(){
             if(!pista.emUso){
                 this.pista = pista;
                 this.pista.emUso = true;
@@ -48,7 +48,6 @@ namespace av2_sistemas_distribuidos
 
                 Thread.Sleep(900);
                 pistaParaUsar.emUso = false;
-
                 return true;
             } else {
                 Console.WriteLine(this.nome + " aguardando autorização para decolar");
@@ -57,12 +56,19 @@ namespace av2_sistemas_distribuidos
 
         }
 
-        public void init(){
+        public void init(int acao){
             Task t = new Task(() => {
                 Console.WriteLine("Avião " + this.nome + " está no radar da torre de comando.");
 
                 while(true){
-                    if(this.Decolar()){
+                    var realizouAcao = false;
+                    if(acao == 0){
+                        realizouAcao = Decolar();
+                    } else {
+                        realizouAcao = Pousar();
+                    }
+
+                    if(realizouAcao){
                         break;
                     } else {
                         Thread.Sleep(2000);
