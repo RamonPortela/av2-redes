@@ -9,31 +9,55 @@ namespace av2_sistemas_distribuidos
     public class Aviao
     {
         public string nome{get;set;}
+        private static int avioesCriados = 0;
 
         private List<PistaDePouso> pistas {get; set;}
+        private List<Hangar> hangares{get;set;}
 
-        public Aviao(string nome){
-            this.nome = nome;
+        private Hangar hangarParaEstacionar{get;set;}
+
+        private Aviao(){
+            avioesCriados++;
+            this.nome = "Avião " + avioesCriados.ToString();
         }
 
-        public Aviao(string nome, List<PistaDePouso> pistas) : this(nome){
+        public Aviao(List<PistaDePouso> pistas, List<Hangar> hangares) : this(){            
             this.pistas = pistas;
+            this.hangares = hangares;
         }
 
         public bool Pousar(){
            var pistaParaUsar = this.pistas.FirstOrDefault(x => !x.emUso);
-            if(pistaParaUsar != null && !pistaParaUsar.emUso){
+           var hangarParaEstacionar = this.hangares.FirstOrDefault(h => !h.emUso);
+            if(pistaParaUsar != null && !pistaParaUsar.emUso && hangarParaEstacionar != null && !hangarParaEstacionar.emUso){
+                hangarParaEstacionar.emUso = true;
                 pistaParaUsar.emUso = true;
+                this.hangarParaEstacionar = hangarParaEstacionar;
                 Console.WriteLine(this.nome + " está realizando o procedimento de aterrisagem, na pista: " + pistaParaUsar.numero);
+                Console.WriteLine("O hangar " + this.hangarParaEstacionar.numero + " está designado para o "+ this.nome+ " estacionar.");
 
                 Thread.Sleep(1500);
                 Console.WriteLine(this.nome + " aterrisou! A pista " + pistaParaUsar.numero + " será liberada");
 
                 Thread.Sleep(900);
                 pistaParaUsar.emUso = false;
+                Console.WriteLine("Pista " + pistaParaUsar.numero + " agora está liberada.");
+
                 return true;
             } else {
-                Console.WriteLine(this.nome + " aguardando autorização para aterrisar");
+
+                string mensagem = "Permissão de decolagem negada,";
+
+                if(pistaParaUsar != null && !pistaParaUsar.emUso){
+                    Console.WriteLine(mensagem + " todas as pistas estão ocupadas");
+                    return false;
+                }
+
+                if(hangarParaEstacionar != null && !hangarParaEstacionar.emUso){
+                    Console.WriteLine(mensagem + " todas os hangares estão ocupados");
+                    return false;
+                }
+
                 return false;
             }
         }
@@ -42,6 +66,11 @@ namespace av2_sistemas_distribuidos
             var pistaParaUsar = this.pistas.FirstOrDefault(x => !x.emUso);
             if(pistaParaUsar != null && !pistaParaUsar.emUso){
                 pistaParaUsar.emUso = true;
+
+                Console.WriteLine(this.nome+ " está liberando o Hangar " + this.hangarParaEstacionar.numero);
+                this.hangarParaEstacionar.emUso = false;
+                this.hangarParaEstacionar = null;
+                
                 Console.WriteLine(this.nome + " está realizando o procedimento de decolagem, na pista: " + pistaParaUsar.numero);
 
                 Thread.Sleep(1500);
@@ -49,34 +78,49 @@ namespace av2_sistemas_distribuidos
 
                 Thread.Sleep(900);
                 pistaParaUsar.emUso = false;
+                Console.WriteLine("Pista " + pistaParaUsar.numero + " agora está liberada.");
+
                 return true;
             } else {
-                Console.WriteLine(this.nome + " aguardando autorização para decolar");
+                Console.WriteLine("Permissão de decolagem negada, todas as pistas estão ocupadas.");
                 return false;
             }
         }
 
-        public void init(int acao){
+        public Task init(){
             Task t = new Task(() => {
-                Console.WriteLine("Avião " + this.nome + " está no radar da torre de comando.");
+                Console.WriteLine(this.nome + " está no radar da torre de comando.");
 
                 while(true){
-                    var realizouAcao = false;
-                    if(acao % 2 == 0){
-                        realizouAcao = Decolar();
-                    } else {
-                        realizouAcao = Pousar();
-                    }
-
-                    if(realizouAcao){
+                    Console.WriteLine(this.nome + " está pedindo permissão para pousar.");
+                    var pousou = false;
+                    pousou = Pousar();
+                    if(pousou){
                         break;
                     } else {
+                        Thread.Sleep(2000);
+                    }
+                }
+
+                Console.WriteLine(this.nome + " está aguardando no Hangar " + this.hangarParaEstacionar.numero); 
+                Thread.Sleep(2000);
+
+                while(true){
+                    Console.WriteLine(this.nome + " está pedindo permissão para decolar.");
+                    var decolou = false;
+                    decolou = Decolar();
+                    if(decolou){
+                        break;
+                    }
+                    else{
                         Thread.Sleep(2000);
                     }
                 }
             });
 
             t.Start();
+
+            return t;
         }
 
     }
