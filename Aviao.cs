@@ -9,7 +9,7 @@ namespace av2_sistemas_distribuidos
     public class Aviao
     {
         public string nome{get;set;}
-        
+
         private List<PistaDePouso> pistas {get; set;}
 
         public Aviao(string nome){
@@ -24,10 +24,10 @@ namespace av2_sistemas_distribuidos
            var pistaParaUsar = this.pistas.FirstOrDefault(x => !x.emUso);
             if(!pistaParaUsar.emUso){
                 pistaParaUsar.emUso = true;
-                Console.WriteLine(this.nome + " está realizando o procedimento de decolagem");
+                Console.WriteLine(this.nome + " está realizando o procedimento de aterrisagem");
 
                 Thread.Sleep(1500);
-                Console.WriteLine(this.nome + " decolou! A pista será liberada");
+                Console.WriteLine(this.nome + " aterrisou! A pista será liberada");
 
                 Thread.Sleep(900);
                 pistaParaUsar.emUso = false;
